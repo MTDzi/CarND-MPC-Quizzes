@@ -14,6 +14,7 @@ echo "Saving headers and libraries to ${prefix}"
 
 # BLAS
 cd $srcdir/ThirdParty/Blas
+cp /usr/share/automake-1.15/config.guess ./
 ./get.Blas
 mkdir -p build && cd build
 ../configure --prefix=$prefix --disable-shared --with-pic
@@ -21,6 +22,7 @@ make install
 
 # Lapack
 cd $srcdir/ThirdParty/Lapack
+cp /usr/share/automake-1.15/config.guess ./
 ./get.Lapack
 mkdir -p build && cd build
 ../configure --prefix=$prefix --disable-shared --with-pic \
@@ -29,14 +31,22 @@ make install
 
 # ASL
 cd $srcdir//ThirdParty/ASL
+cp /usr/share/automake-1.15/config.guess ./
 ./get.ASL
 
 # MUMPS
 cd $srcdir/ThirdParty/Mumps
+cp /usr/share/automake-1.15/config.guess ./
 ./get.Mumps
 
 # build everything
 cd $srcdir
+cp /usr/share/automake-1.15/config.guess ./
+cd BuildTools
+cp /usr/share/automake-1.15/config.guess ./
+cd ../Ipopt
+cp /usr/share/automake-1.15/config.guess ./
+cd ..
 ./configure --prefix=$prefix coin_skip_warn_cxxflags=yes \
     --with-blas="$prefix/lib/libcoinblas.a -lgfortran" \
     --with-lapack=$prefix/lib/libcoinlapack.a

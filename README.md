@@ -1,21 +1,38 @@
-# CarND Controls Quizzes
+# Ipopt installation on Jetson
 
-Quizzes for *Vehicle Models* and *Model Predictive Control* sections.
+To fetch only this branch, call:
+```
+git clone --single-branch --branch install_on_jetson https://github.com/MTDzi/CarND-MPC-Quizzes
+```
 
-1. [Global Kinematic Model Quiz](./global_kinematic_model) - Implement the *Global Kinematic Model*.
-2. [Polynomial Fitting Quiz](./polyfit) - Fit and evaluate polynomials.
-3. [Mind The Line Quiz](./mpc_to_line) - Implement MPC and minimize cross track and orientation errors to a straight line trajectory.  See [this document](https://github.com/udacity/CarND-MPC-Quizzes/blob/master/install_Ipopt_CppAD.md) for setup tips for executing the plotting code in the ```MPC.cpp``` solution file.
+To install, call:
+```
+sudo ./install-ubuntu-MPC.sh
+```
 
-To do a quiz:
+To test if the installation was successful and that Ipopt works, call:
 
-1. Go to quiz directory.
-2. Make a build directory with `mkdir build`.
-3. Change into the build directory, `cd build`.
-4. Compile the project, `cmake .. && make`.
+```
+cd mpc_to_line
+mkdir build
+cd build
+cmake ..
+make
+./mpc
+```
 
-A solution for each quiz is presented in the solution directory.
+After that, you should see 50 iterations of output that ends on something like this:
+```
+...
 
-## Dependencies
-
-The *Global Kinematic Quiz* and *Polynomial Fitting* quizzes have all the dependencies in repo. For the *MPC* quiz
-you'll have to install Ipopt and CppAD.  Please refer to [this document](https://github.com/udacity/CarND-MPC-Quizzes/blob/master/install_Ipopt_CppAD.md) for installation instructions.
+Iteration 49
+Cost 18184.8
+x = 21.1792
+y = -0.997072
+psi = 0.000309515
+v = 12.5
+cte = -0.0014366
+epsi = 0.000309515
+delta = -0.0038108
+a = 1
+```
